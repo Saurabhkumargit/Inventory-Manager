@@ -55,8 +55,6 @@ All inventory mutations occur inside MongoDB transactions.
 | Backend | Node.js + Express |
 | Database | MongoDB (Replica Set) |
 | ODM | Mongoose |
-| Cache | Redis (optional, read-only) |
-| Auth | JWT (basic / placeholder) |
 | Frontend | None |
 
 ---
