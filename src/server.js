@@ -1,15 +1,11 @@
-const app = require("./app");
-const connectDB = require("../config/db");
 require("dotenv").config();
 
-
-const PORT = 3000;
+const app = require("./app");
+const connectDB = require("./config/db");
 
 async function startServer() {
-    await connectDB();
-    app.listen(PORT, () => {
-        console.log(`Server running on port ${PORT}`);
-    });
+  await connectDB();
+  app.listen(3000, () => console.log("Server running on 3000"));
 }
 
 startServer();

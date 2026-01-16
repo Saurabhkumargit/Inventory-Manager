@@ -1,13 +1,10 @@
-// src/app.js
-
 const express = require("express");
+const reservationRoutes = require("./routes/reservation.routes");
 
 const app = express();
 
-// middlewares
 app.use(express.json());
 
-// routes will be added later
-// app.use("/products", productRoutes);
+app.use("/reservations", reservationRoutes);
 
 module.exports = app;

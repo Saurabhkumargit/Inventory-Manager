@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Product = require("../../models/Product");
+const Product = require("../models/Product");
 
 async function run() {
   await mongoose.connect(
@@ -7,13 +7,13 @@ async function run() {
   );
 
   const product = await Product.create({
-    name: "Test Product",
+    name: "Concurrent Test Product",
     price: 100,
-    totalStock: 5,
-    availableStock: 5,
+    availableStock: 2,
+    totalStock: 2,
   });
 
-  console.log(product);
+  console.log("Created product:", product._id);
   process.exit(0);
 }
 
