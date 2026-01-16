@@ -48,6 +48,53 @@ All inventory mutations occur inside MongoDB transactions.
 
 ---
 
+## 🏗️ Architecture Diagram
+
++--------------------+
+| API Client |
+| (Postman / Curl) |
++---------+----------+
+|
+v
++--------------------+
+| Express Server |
+| (Controllers) |
++---------+----------+
+|
+v
++--------------------+
+| Service Layer |
+| - Reservation |
+| - Order |
+| - Expiry Job |
++---------+----------+
+|
+v
++-------------------------------+
+| MongoDB Replica Set |
+| |
+| +-------------------------+ |
+| | Product | |
+| | - totalStock | |
+| | - availableStock | |
+| +-------------------------+ |
+| |
+| +-------------------------+ |
+| | InventoryReservation | |
+| | - status (ACTIVE, ...) | |
+| | - expiresAt | |
+| +-------------------------+ |
+| |
+| +-------------------------+ |
+| | Order | |
+| | - reservationId | |
+| | - priceAtPurchase | |
+| +-------------------------+ |
+| |
+| (All writes via |
+| MongoDB Transactions) |
++-------------------------------+
+
 ## 🧱 Tech Stack
 
 | Layer | Technology |
